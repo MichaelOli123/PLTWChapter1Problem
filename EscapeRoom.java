@@ -65,8 +65,10 @@ public class EscapeRoom
     boolean play = true;
     while (play)
     {
+    
       /* TODO: get all the commands working */
 	  /* Your code here */
+    
     
       
     }
