@@ -86,6 +86,22 @@ public class EscapeRoom
         System.out.println("Entered if statement");
         game.movePlayer(0, 60);
       }
+      if (thing.equals("jump") || thing.equals("j")) {
+        System.out.println("Entered if statement");
+        game.movePlayer(120, 0);
+      }
+      if (thing.equals("jumpup") || thing.equals("ju")) {
+        System.out.println("Entered if statement");
+        game.movePlayer(0, 120);
+      }
+      if (thing.equals("jumpdown") || thing.equals("jd")) {
+        System.out.println("Entered if statement");
+        game.movePlayer(0, -120);
+      }
+      if (thing.equals("jumpleft") || thing.equals("jl")) {
+        System.out.println("Entered if statement");
+        game.movePlayer(-120, 0);
+      }
       
     }
 
