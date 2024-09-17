@@ -28,8 +28,8 @@ public class GameGUI extends JComponent
   private static final int SPACE_SIZE = 60;
   private static final int GRID_W = 8;
   private static final int GRID_H = 5;
-  private static final int START_LOC_X = 15;
-  private static final int START_LOC_Y = 15;
+  private static final int START_LOC_X = 10;
+  private static final int START_LOC_Y = 10;
   
   // initial placement of player
   int x = START_LOC_X; 
