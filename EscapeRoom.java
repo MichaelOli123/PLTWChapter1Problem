@@ -67,13 +67,27 @@ public class EscapeRoom
     {
     
       /* TODO: get all the commands working */
-	  /* Your code here */
-    
-    
+      /* Your code here */
+      String thing = UserInput.getValidInput(validCommands);
+      System.out.println("User Input accepted");
+      if (thing.equals("right") || thing.equals("r")) {
+        System.out.println("Entered if statement");
+        game.movePlayer(60, 0);
+      }
+      if (thing.equals("left") || thing.equals("l")) {
+        System.out.println("Entered if statement");
+        game.movePlayer(-60, 0);
+      }
+      if (thing.equals("up") || thing.equals("u")) {
+        System.out.println("Entered if statement");
+        game.movePlayer(0, -60);
+      }
+      if (thing.equals("down") || thing.equals("d")) {
+        System.out.println("Entered if statement");
+        game.movePlayer(0, 60);
+      }
       
     }
-
-  
 
     score += game.endGame();
 
