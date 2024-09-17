@@ -71,35 +71,27 @@ public class EscapeRoom
       String thing = UserInput.getValidInput(validCommands);
       System.out.println("User Input accepted");
       if (thing.equals("right") || thing.equals("r")) {
-        System.out.println("Entered if statement");
         game.movePlayer(60, 0);
       }
       if (thing.equals("left") || thing.equals("l")) {
-        System.out.println("Entered if statement");
         game.movePlayer(-60, 0);
       }
       if (thing.equals("up") || thing.equals("u")) {
-        System.out.println("Entered if statement");
         game.movePlayer(0, -60);
       }
       if (thing.equals("down") || thing.equals("d")) {
-        System.out.println("Entered if statement");
         game.movePlayer(0, 60);
       }
-      if (thing.equals("jump") || thing.equals("j")) {
-        System.out.println("Entered if statement");
+      if (thing.equals("jump") || thing.equals("jr")) {
         game.movePlayer(120, 0);
       }
       if (thing.equals("jumpup") || thing.equals("ju")) {
-        System.out.println("Entered if statement");
-        game.movePlayer(0, 120);
-      }
-      if (thing.equals("jumpdown") || thing.equals("jd")) {
-        System.out.println("Entered if statement");
         game.movePlayer(0, -120);
       }
+      if (thing.equals("jumpdown") || thing.equals("jd")) {
+        game.movePlayer(0, 120);
+      }
       if (thing.equals("jumpleft") || thing.equals("jl")) {
-        System.out.println("Entered if statement");
         game.movePlayer(-120, 0);
       }
       
