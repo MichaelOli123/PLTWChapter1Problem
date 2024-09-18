@@ -69,7 +69,6 @@ public class EscapeRoom
       /* TODO: get all the commands working */
       /* Your code here */
       String thing = UserInput.getValidInput(validCommands);
-      System.out.println("User Input accepted");
       if (thing.equals("right") || thing.equals("r")) {
         game.movePlayer(60, 0);
       }
@@ -82,18 +81,27 @@ public class EscapeRoom
       if (thing.equals("down") || thing.equals("d")) {
         game.movePlayer(0, 60);
       }
+
       if (thing.equals("jump") || thing.equals("jr")) {
         game.movePlayer(120, 0);
       }
+      
       if (thing.equals("jumpup") || thing.equals("ju")) {
         game.movePlayer(0, -120);
       }
+      
       if (thing.equals("jumpdown") || thing.equals("jd")) {
         game.movePlayer(0, 120);
       }
+      
       if (thing.equals("jumpleft") || thing.equals("jl")) {
         game.movePlayer(-120, 0);
       }
+
+      // if (thing.equals("pickup") || thing.equals("p")) {
+      //   game.pickupPrize();
+      // }
+
       
     }
 
