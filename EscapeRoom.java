@@ -70,7 +70,8 @@ public class EscapeRoom
       /* Your code here */
       String thing = UserInput.getValidInput(validCommands);
       if (thing.equals("pickup")|| thing.equals("p")) {
-        game.pickupPrize();
+        score += game.pickupPrize();
+        System.out.println("Score: " + score);
       }
       if (thing.equals("right") || thing.equals("r")) {
         game.movePlayer(60, 0);
@@ -99,11 +100,15 @@ public class EscapeRoom
       }
 
       if (thing.equals("quit") || thing.equals("q")) {
-        game.endGame();
+        score += game.endGame();
+        System.out.println("Score: " + score);
+
       }
 
       if (thing.equals("replay")) {
-        game.replay();
+        score += game.replay();
+        System.out.println("Score: " + score);
+
       }
 
       if (thing.equals("help") || thing.equals("?")) {
@@ -119,7 +124,7 @@ public class EscapeRoom
       
     }
 
-    score += game.getSteps();
+    score += game.endGame();
 
     System.out.println("score=" + score);
     System.out.println("steps=" + game.getSteps());

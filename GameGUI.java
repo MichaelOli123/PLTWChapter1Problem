@@ -271,7 +271,6 @@ public class GameGUI extends JComponent
 
     for (Rectangle p: prizes)
     {
-      System.out.println("prizex:" + p.getX() + " prizey:" + p.getY() + "\npx: " + px + " py:" + py);
       // if location has a prize, pick it up
       if (p.getWidth() > 0 && p.contains(px, py))
       {
