@@ -28,8 +28,8 @@ public class GameGUI extends JComponent
   private static final int SPACE_SIZE = 60;
   private static final int GRID_W = 8;
   private static final int GRID_H = 5;
-  private static final int START_LOC_X = 10;
-  private static final int START_LOC_Y = 10;
+  private static final int START_LOC_X = 15;
+  private static final int START_LOC_Y = 15;
   
   // initial placement of player
   int x = START_LOC_X; 
@@ -271,7 +271,7 @@ public class GameGUI extends JComponent
 
     for (Rectangle p: prizes)
     {
-      // DEBUG: System.out.println("prizex:" + p.getX() + " prizey:" + p.getY() + "\npx: " + px + " py:" + py);
+      System.out.println("prizex:" + p.getX() + " prizey:" + p.getY() + "\npx: " + px + " py:" + py);
       // if location has a prize, pick it up
       if (p.getWidth() > 0 && p.contains(px, py))
       {
@@ -283,6 +283,7 @@ public class GameGUI extends JComponent
     }
     System.out.println("OOPS, NO PRIZE HERE");
     return -prizeVal;  
+    
   }
 
   /**
@@ -431,6 +432,7 @@ public class GameGUI extends JComponent
       Rectangle r;
       r = new Rectangle((w*s + 15),(h*s + 15), 15, 15);
       prizes[numPrizes] = r;
+      
      }
   }
 

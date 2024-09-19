@@ -69,22 +69,48 @@ public class EscapeRoom
       /* TODO: get all the commands working */
       /* Your code here */
       String thing = UserInput.getValidInput(validCommands);
-      System.out.println("User Input accepted");
+      
+      if (thing.equals("pickup") || thing.equals("p")) {
+        System.out.println("Entered if statement");
+        game.pickupPrize();
+        
+
+      }
       if (thing.equals("right") || thing.equals("r")) {
         System.out.println("Entered if statement");
         game.movePlayer(60, 0);
+        System.out.println(game.x);
+        System.out.println(game.y);
       }
       if (thing.equals("left") || thing.equals("l")) {
         System.out.println("Entered if statement");
         game.movePlayer(-60, 0);
+        System.out.println(game.x);
+        System.out.println(game.y);
       }
       if (thing.equals("up") || thing.equals("u")) {
         System.out.println("Entered if statement");
         game.movePlayer(0, -60);
+        System.out.println(game.x);
+        System.out.println(game.y);
       }
       if (thing.equals("down") || thing.equals("d")) {
         System.out.println("Entered if statement");
         game.movePlayer(0, 60);
+        System.out.println(game.x);
+        System.out.println(game.y);  
+
+      
+
+
+
+
+
+
+
+
+
+      
       }
       
     }
@@ -96,4 +122,5 @@ public class EscapeRoom
   }
 }
 
-        
+
+
