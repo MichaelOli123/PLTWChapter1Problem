@@ -70,6 +70,9 @@ public class EscapeRoom
       /* Your code here */
       String thing = UserInput.getValidInput(validCommands);
       System.out.println("User Input accepted");
+      if (thing.equals("pickup")|| thing.equals("p")) {
+        game.pickupPrize();
+      }
       if (thing.equals("right") || thing.equals("r")) {
         game.movePlayer(60, 0);
         System.out.println(game.x);
