@@ -69,33 +69,23 @@ public class EscapeRoom
       /* TODO: get all the commands working */
       /* Your code here */
       String thing = UserInput.getValidInput(validCommands);
-      
-      if (thing.equals("pickup") || thing.equals("p")) {
-        System.out.println("Entered if statement");
-        game.pickupPrize();
-        
-
-      }
+      System.out.println("User Input accepted");
       if (thing.equals("right") || thing.equals("r")) {
-        System.out.println("Entered if statement");
         game.movePlayer(60, 0);
         System.out.println(game.x);
         System.out.println(game.y);
       }
       if (thing.equals("left") || thing.equals("l")) {
-        System.out.println("Entered if statement");
         game.movePlayer(-60, 0);
         System.out.println(game.x);
         System.out.println(game.y);
       }
       if (thing.equals("up") || thing.equals("u")) {
-        System.out.println("Entered if statement");
         game.movePlayer(0, -60);
         System.out.println(game.x);
         System.out.println(game.y);
       }
       if (thing.equals("down") || thing.equals("d")) {
-        System.out.println("Entered if statement");
         game.movePlayer(0, 60);
         System.out.println(game.x);
         System.out.println(game.y);  
@@ -112,6 +102,27 @@ public class EscapeRoom
 
       
       }
+
+      if (thing.equals("jump") || thing.equals("jr")) {
+        game.movePlayer(120, 0);
+      }
+      
+      if (thing.equals("jumpup") || thing.equals("ju")) {
+        game.movePlayer(0, -120);
+      }
+      
+      if (thing.equals("jumpdown") || thing.equals("jd")) {
+        game.movePlayer(0, 120);
+      }
+      
+      if (thing.equals("jumpleft") || thing.equals("jl")) {
+        game.movePlayer(-120, 0);
+      }
+
+      // if (thing.equals("pickup") || thing.equals("p")) {
+      //   game.pickupPrize();
+      // }
+
       
     }
 
