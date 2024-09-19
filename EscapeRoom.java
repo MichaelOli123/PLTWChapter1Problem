@@ -69,6 +69,14 @@ public class EscapeRoom
       /* TODO: get all the commands working */
       /* Your code here */
       String thing = UserInput.getValidInput(validCommands);
+      if (game.isTrap(60, 0) || game.isTrap(-60, 0) || game.isTrap(0, 60) || game.isTrap(0, -60)) {
+        System.out.print("There's a trap nearby! Do you want to spring it? (yes/no): ");
+        String springTrap = UserInput.getValidInput(new String[]{"yes", "no"});
+        if (springTrap.equals("yes")) {
+            score += game.springTrap(60, 0);
+        }
+      }
+
       if (thing.equals("pickup")|| thing.equals("p")) {
         score += game.pickupPrize();
         System.out.println("Score: " + score);
