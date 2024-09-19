@@ -102,10 +102,24 @@ public class EscapeRoom
         game.endGame();
       }
 
+      if (thing.equals("replay")) {
+        game.replay();
+      }
+
+      if (thing.equals("help") || thing.equals("?")) {
+        System.out.println("\nWelcome to our Escape Game!");
+        System.out.println("Objective: pick up all coins and escape to the far right");
+        System.out.println("Use up, down, left, right, or u, d, l, r, to move");
+        System.out.println("use jump, jumpup, jumpdown, jumpleft or jr, ju, jd, jl to skip a space");
+        System.out.println("Use pickup, or p, to pickup a coin");
+        System.out.println("Use quit, or q, to end the game once you reach the far right side");
+        System.out.println("Use replay to restart after reaching the far right side.");
+      }
+
       
     }
 
-    score += game.endGame();
+    score += game.getSteps();
 
     System.out.println("score=" + score);
     System.out.println("steps=" + game.getSteps());
