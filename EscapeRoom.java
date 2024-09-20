@@ -81,30 +81,37 @@ public class EscapeRoom
         score += game.pickupPrize();
         System.out.println("Score: " + score);
       }
+
       if (thing.equals("right") || thing.equals("r")) {
-        game.movePlayer(60, 0);
+        score += game.movePlayer(60, 0);
       }
+
       if (thing.equals("left") || thing.equals("l")) {
-        game.movePlayer(-60, 0);
+        score += game.movePlayer(-60, 0);
       }
+
       if (thing.equals("up") || thing.equals("u")) {
-        game.movePlayer(0, -60);
+        score += game.movePlayer(0, -60);
       }
+
       if (thing.equals("down") || thing.equals("d")) {
-        game.movePlayer(0, 60);
+        score += game.movePlayer(0, 60);
       }
+
       if (thing.equals("jump") || thing.equals("jr")) {
-        game.movePlayer(120, 0);
+        score += game.movePlayer(120, 0);
       }
+
       if (thing.equals("jumpup") || thing.equals("ju")) {
-        game.movePlayer(0, -120);
+        score += game.movePlayer(0, -120);
       }
+
       if (thing.equals("jumpdown") || thing.equals("jd")) {
-        game.movePlayer(0, 120);
+        score += game.movePlayer(0, 120);
       }
       
       if (thing.equals("jumpleft") || thing.equals("jl")) {
-        game.movePlayer(-120, 0);
+        score += game.movePlayer(-120, 0);
       }
 
       if (thing.equals("quit") || thing.equals("q")) {
@@ -128,7 +135,6 @@ public class EscapeRoom
         System.out.println("Use quit, or q, to end the game once you reach the far right side");
         System.out.println("Use replay to restart after reaching the far right side.");
       }
-
       
     }
 
