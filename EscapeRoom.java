@@ -42,8 +42,8 @@ public class EscapeRoom
   {      
     // welcome message
     System.out.println("Welcome to EscapeRoom!");
-    System.out.println("Get to the other side of the room, avoiding walls and invisible traps,");
-    System.out.println("pick up all the prizes.\n");
+    System.out.println("Type 'help' for game objective and commands. \n");
+
     
     GameGUI game = new GameGUI();
     game.createBoard();
@@ -77,63 +77,76 @@ public class EscapeRoom
         }
       }
 
-      if (thing.equals("pickup")|| thing.equals("p")) {
-        score += game.pickupPrize();
-        System.out.println("Score: " + score);
-      }
-
-      if (thing.equals("right") || thing.equals("r")) {
-        score += game.movePlayer(60, 0);
-      }
-
-      if (thing.equals("left") || thing.equals("l")) {
-        score += game.movePlayer(-60, 0);
-      }
-
-      if (thing.equals("up") || thing.equals("u")) {
-        score += game.movePlayer(0, -60);
-      }
-
-      if (thing.equals("down") || thing.equals("d")) {
-        score += game.movePlayer(0, 60);
-      }
-
-      if (thing.equals("jump") || thing.equals("jr")) {
-        score += game.movePlayer(120, 0);
-      }
-
-      if (thing.equals("jumpup") || thing.equals("ju")) {
-        score += game.movePlayer(0, -120);
-      }
-
-      if (thing.equals("jumpdown") || thing.equals("jd")) {
-        score += game.movePlayer(0, 120);
-      }
-      
-      if (thing.equals("jumpleft") || thing.equals("jl")) {
-        score += game.movePlayer(-120, 0);
-      }
-
-      if (thing.equals("quit") || thing.equals("q")) {
-        score += game.endGame();
-        System.out.println("Score: " + score);
-
-      }
-
-      if (thing.equals("replay")) {
-        score += game.replay();
-        System.out.println("Score: " + score);
-
-      }
-
-      if (thing.equals("help") || thing.equals("?")) {
-        System.out.println("\nWelcome to our Escape Game!");
-        System.out.println("Objective: pick up all coins and escape to the far right");
-        System.out.println("Use up, down, left, right, or u, d, l, r, to move");
-        System.out.println("use jump, jumpup, jumpdown, jumpleft or jr, ju, jd, jl to skip a space");
-        System.out.println("Use pickup, or p, to pickup a coin");
-        System.out.println("Use quit, or q, to end the game once you reach the far right side");
-        System.out.println("Use replay to restart after reaching the far right side.");
+      switch (thing) {
+        case "right":
+        case "r":
+            score += game.movePlayer(m, 0);
+            break;
+        case "left":
+        case "l":
+            score += game.movePlayer(-m, 0);
+            break;
+        case "up":
+        case "u":
+            score += game.movePlayer(0, -m);
+            break;
+        case "down":
+        case "d":
+            score += game.movePlayer(0, m);
+            break;
+        case "jump":
+        case "jr":
+            if (!game.isTrap(2*m, 0)) {
+                score += game.movePlayer(2*m, 0);
+            } else {
+                System.out.println("Cannot jump over a trap!");
+            }
+            break;
+        case "jumpleft":
+        case "jl":
+            if (!game.isTrap(-2*m, 0)) {
+                score += game.movePlayer(-2*m, 0);
+            } else {
+                System.out.println("Cannot jump over a trap!");
+            }
+            break;
+        case "jumpup":
+        case "ju":
+            if (!game.isTrap(0, -2*m)) {
+                score += game.movePlayer(0, -2*m);
+            } else {
+                System.out.println("Cannot jump over a trap!");
+            }
+            break;
+        case "jumpdown":
+        case "jd":
+            if (!game.isTrap(0, 2*m)) {
+                score += game.movePlayer(0, 2*m);
+            } else {
+                System.out.println("Cannot jump over a trap!");
+            }
+            break;
+        case "pickup":
+        case "p":
+            score += game.pickupPrize();
+            break;
+        case "quit":
+        case "q":
+            play = false;
+            break;
+        case "replay":
+            score += game.replay();
+            break;
+        case "help":
+        case "?":
+          System.out.println("\nWelcome to our Escape Game!");
+          System.out.println("Objective: pick up all coins and escape to the far right");
+          System.out.println("Use up, down, left, right, or u, d, l, r, to move");
+          System.out.println("use jump, jumpup, jumpdown, jumpleft or jr, ju, jd, jl to skip a space");
+          System.out.println("Use pickup, or p, to pickup a coin");
+          System.out.println("Use quit, or q, to end the game once you reach the far right side");
+          System.out.println("Use replay to restart after reaching the far right side.");
+            break;
       }
       
     }
