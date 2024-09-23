@@ -147,6 +147,10 @@ public class EscapeRoom
           System.out.println("Use quit, or q, to end the game once you reach the far right side");
           System.out.println("Use replay to restart after reaching the far right side.");
             break;
+        default:
+            System.out.println("Invalid input.");
+            score -= 10;
+        
       }
       
     }
