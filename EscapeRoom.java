@@ -82,23 +82,28 @@ public class EscapeRoom
         case "right":
         case "r":
             score += game.movePlayer(m, 0);
+            System.out.println(score);
             break;
         case "left":
         case "l":
             score += game.movePlayer(-m, 0);
+            System.out.println(score);
             break;
         case "up":
         case "u":
             score += game.movePlayer(0, -m);
+            System.out.println(score);
             break;
         case "down":
         case "d":
             score += game.movePlayer(0, m);
+            System.out.println(score);
             break;
         case "jump":
         case "jr":
             if (!game.isTrap(2*m, 0)) {
                 score += game.movePlayer(2*m, 0);
+                System.out.println(score);
             } else {
                 System.out.println("Cannot jump over a trap!");
             }
@@ -107,6 +112,7 @@ public class EscapeRoom
         case "jl":
             if (!game.isTrap(-2*m, 0)) {
                 score += game.movePlayer(-2*m, 0);
+                System.out.println(score);
             } else {
                 System.out.println("Cannot jump over a trap!");
             }
@@ -115,6 +121,8 @@ public class EscapeRoom
         case "ju":
             if (!game.isTrap(0, -2*m)) {
                 score += game.movePlayer(0, -2*m);
+                System.out.println(score);
+
             } else {
                 System.out.println("Cannot jump over a trap!");
             }
@@ -123,6 +131,8 @@ public class EscapeRoom
         case "jd":
             if (!game.isTrap(0, 2*m)) {
                 score += game.movePlayer(0, 2*m);
+                System.out.println(score);
+
             } else {
                 System.out.println("Cannot jump over a trap!");
             }
@@ -130,13 +140,19 @@ public class EscapeRoom
         case "pickup":
         case "p":
             score += game.pickupPrize();
+            System.out.println(score);
+
             break;
         
         case "ps":
             game.pickupPowerup();
+            System.out.println(score);
+
             break;
         case "px":
             game.cancelpowerup();
+            System.out.println(score);
+
             break;
         
 
