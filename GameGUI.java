@@ -35,6 +35,8 @@ public class GameGUI extends JComponent
   int x = START_LOC_X; 
   int y = START_LOC_Y;
 
+  int m = 60;
+
   // grid image to show in background
   private Image bgImage;
 
@@ -46,9 +48,20 @@ public class GameGUI extends JComponent
   // walls, prizes, traps
   private int totalWalls;
   private Rectangle[] walls; 
+
+
   private Image prizeImage;
   private int totalPrizes;
   private Rectangle[] prizes;
+
+  private Image powerupImage;
+  private int totalPowerups;
+  private Rectangle[] powerups;
+
+
+
+
+
   private int totalTraps;
   private Rectangle[] traps;
 
@@ -79,6 +92,11 @@ public class GameGUI extends JComponent
     } catch (Exception e) {
       System.err.println("Could not open file coin.png");
     }
+    try {
+      powerupImage = ImageIO.read(new File("rock.png"));      
+    } catch (Exception e) {
+      System.err.println("Could not open file rock.png");
+    }
   
     // player image, student can customize this image by changing file on disk
     try {
@@ -102,6 +120,8 @@ public class GameGUI extends JComponent
     totalWalls = 20;
     totalPrizes = 3;
     totalTraps = 5;
+    totalPowerups = 1;
+
   }
 
  /**
@@ -115,6 +135,9 @@ public class GameGUI extends JComponent
     
     prizes = new Rectangle[totalPrizes];
     createPrizes();
+
+    powerups = new Rectangle[totalPowerups];
+    createPowerups();
 
     walls = new Rectangle[totalWalls];
     createWalls();
@@ -285,6 +308,34 @@ public class GameGUI extends JComponent
     
   }
 
+  public boolean cancelpowerup(){
+    m = 60;
+    return true;
+  }
+
+  public boolean pickupPowerup()
+  {
+    double px = playerLoc.getX();
+    double py = playerLoc.getY();
+
+    for (Rectangle ps: powerups)
+    {
+      // if location has a prize, pick it up
+      if (ps.getWidth() > 0 && ps.contains(px, py))
+      {
+        System.out.println("YOU PICKED UP A POWERUP! ACQUIRED JUMPSTEP!!");
+        ps.setSize(0,0);
+        repaint();
+        m = 120;
+        return true;
+      }
+    }
+    System.out.println("OOPS, NO POWERUP HERE");
+    m = 60;
+    return false;
+    
+  }
+
   /**
    * Return the numbers of steps the player has taken.
    * <P>
@@ -306,7 +357,10 @@ public class GameGUI extends JComponent
   {
     totalPrizes = p;
   }
-  
+  public void setPowerups(int ps) 
+  {
+    totalPowerups = ps;
+  }
   /**
    * Set the designated number of traps in the game. This can be used to customize the gameboard configuration.
    * <P>
@@ -343,6 +397,8 @@ public class GameGUI extends JComponent
     int win = playerAtEnd();
   
     // resize prizes and traps to "reactivate" them
+    for (Rectangle ps: powerups)
+      ps.setSize(SPACE_SIZE/3, SPACE_SIZE/3);
     for (Rectangle p: prizes)
       p.setSize(SPACE_SIZE/3, SPACE_SIZE/3);
     for (Rectangle t: traps)
@@ -400,6 +456,17 @@ public class GameGUI extends JComponent
       g.drawImage(prizeImage, px, py, null);
       }
     }
+    // add prizes
+    for (Rectangle ps : powerups)
+    {
+      // picked up prizes are 0 size so don't render
+      if (ps.getWidth() > 0) 
+      {
+      int px = (int)ps.getX();
+      int py = (int)ps.getY();
+      g.drawImage(powerupImage, px, py, null);
+      }
+    }
 
     // add walls
     for (Rectangle r : walls) 
@@ -431,6 +498,21 @@ public class GameGUI extends JComponent
       Rectangle r;
       r = new Rectangle((w*s + 15),(h*s + 15), 15, 15);
       prizes[numPrizes] = r;
+      
+     }
+  }
+  private void createPowerups()
+  {
+    int s = SPACE_SIZE; 
+    Random rand = new Random();
+     for (int numPowerups = 0; numPowerups < totalPowerups; numPowerups++)
+     {
+      int h = rand.nextInt(GRID_H);
+      int w = rand.nextInt(GRID_W);
+
+      Rectangle r;
+      r = new Rectangle((w*s + 15),(h*s + 15), 15, 15);
+      powerups[numPowerups] = r;
       
      }
   }
