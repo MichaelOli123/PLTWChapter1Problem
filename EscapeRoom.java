@@ -48,8 +48,7 @@ public class EscapeRoom
     GameGUI game = new GameGUI();
     game.createBoard();
 
-    // size of move
-    int m = 60; 
+    
     // individual player moves
     int px = 0;
     int py = 0; 
@@ -59,7 +58,7 @@ public class EscapeRoom
     Scanner in = new Scanner(System.in);
     String[] validCommands = { "right", "left", "up", "down", "r", "l", "u", "d",
     "jump", "jr", "jumpleft", "jl", "jumpup", "ju", "jumpdown", "jd",
-    "pickup", "p", "quit", "q", "replay", "help", "?"};
+    "pickup", "p", "quit", "q", "replay", "help", "?" , "ps", "px"};
   
     // set up game
     boolean play = true;
@@ -69,6 +68,8 @@ public class EscapeRoom
       /* TODO: get all the commands working */
       /* Your code here */
       String thing = UserInput.getValidInput(validCommands);
+      // size of move
+        int m = game.m; 
       if (game.isTrap(60, 0) || game.isTrap(-60, 0) || game.isTrap(0, 60) || game.isTrap(0, -60)) {
         System.out.print("There's a trap nearby! Do you want to spring it? (yes/no): ");
         String springTrap = UserInput.getValidInput(new String[]{"yes", "no"});
@@ -130,6 +131,15 @@ public class EscapeRoom
         case "p":
             score += game.pickupPrize();
             break;
+        
+        case "ps":
+            game.pickupPowerup();
+            break;
+        case "px":
+            game.cancelpowerup();
+            break;
+        
+
         case "quit":
         case "q":
             play = false;
@@ -144,6 +154,7 @@ public class EscapeRoom
           System.out.println("Use up, down, left, right, or u, d, l, r, to move");
           System.out.println("use jump, jumpup, jumpdown, jumpleft or jr, ju, jd, jl to skip a space");
           System.out.println("Use pickup, or p, to pickup a coin");
+          System.out.println("Use ps, to pickup a powerup and px to take away its effects");
           System.out.println("Use quit, or q, to end the game once you reach the far right side");
           System.out.println("Use replay to restart after reaching the far right side.");
             break;
